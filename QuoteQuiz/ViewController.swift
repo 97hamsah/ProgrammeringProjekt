@@ -22,9 +22,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var NextButton: UIButton!
     
-    @IBOutlet weak var AddButton: UIButton!
     
-    var CorrectAnswer = String()
+    var CorrectAnswer:String!
+    
+    var dataModel:DataModel!
+    var viewTwo:SecondViewController!
     
     
     override func viewDidLoad() {
@@ -32,6 +34,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         Hide()
+        
+        dataModel = DataModel()
         
         RandomQuestions()
     }
@@ -47,52 +51,59 @@ class ViewController: UIViewController {
     
     func RandomQuestions(){
         
-        var RandomNumber = arc4random() % 5
-        RandomNumber += 1
-        
-        switch(RandomNumber){
+        var randomNumber = arc4random() % 5
+        randomNumber += 1
+      
+        switch(randomNumber){
         case 1:
-            QuestionLabel.text = "\"No, I am your father\""
-            Button1.setTitle("The Godfather", forState: UIControlState.Normal)
-            Button2.setTitle("The Empire Strikes Back", forState: UIControlState.Normal)
-            Button3.setTitle("Hollywood Chihuahua", forState: UIControlState.Normal)
-            Button4.setTitle("Rambo", forState: UIControlState.Normal)
-            CorrectAnswer = "2"
+            QuestionLabel.text = dataModel.question1
+            Button1.setTitle(dataModel.alt11, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt12, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt13, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt14, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt12
             
             break
         case 2:
-            QuestionLabel.text = "\"Get to the chopper\""
-            Button1.setTitle("Independence Day", forState: UIControlState.Normal)
-            Button2.setTitle("The Avengers", forState: UIControlState.Normal)
-            Button3.setTitle("Yes Man", forState: UIControlState.Normal)
-            Button4.setTitle("Predator", forState: UIControlState.Normal)
-            CorrectAnswer = "4"
+            QuestionLabel.text = dataModel.question2
+            Button1.setTitle(dataModel.alt21, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt22, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt23, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt24, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt24
             break
         case 3:
-            QuestionLabel.text = "\"Just keep Swimming\""
-            Button1.setTitle("Finding Nemo", forState: UIControlState.Normal)
-            Button2.setTitle("The Expendables", forState: UIControlState.Normal)
-            Button3.setTitle("Pulp Fiction", forState: UIControlState.Normal)
-            Button4.setTitle("Accepted", forState: UIControlState.Normal)
-            CorrectAnswer = "1"
+            QuestionLabel.text = dataModel.question3
+            Button1.setTitle(dataModel.alt31, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt32, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt33, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt34, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt31
             break
         case 4:
-            QuestionLabel.text = "\"Nobody puts Baby in a corner\""
-            Button1.setTitle("Fifty Shades Of Grey", forState: UIControlState.Normal)
-            Button2.setTitle("Big Momma's House", forState: UIControlState.Normal)
-            Button3.setTitle("Big Hero 6", forState: UIControlState.Normal)
-            Button4.setTitle("Dirty Dancing", forState: UIControlState.Normal)
-            CorrectAnswer = "4"
+            QuestionLabel.text = dataModel.question4
+            Button1.setTitle(dataModel.alt41, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt42, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt43, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt44, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt44
             break
         case 5:
-            QuestionLabel.text = "\"Say hello to my little friend\""
-            Button1.setTitle("Alien", forState: UIControlState.Normal)
-            Button2.setTitle("The lion king", forState: UIControlState.Normal)
-            Button3.setTitle("Scarface", forState: UIControlState.Normal)
-            Button4.setTitle("Fight club", forState: UIControlState.Normal)
-            CorrectAnswer = "3"
+            QuestionLabel.text = dataModel.question5
+            Button1.setTitle(dataModel.alt51, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt52, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt53, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt54, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt53
             break
-        
+        case 6:
+            QuestionLabel.text = dataModel.question6
+            Button1.setTitle(dataModel.alt61, forState: UIControlState.Normal)
+            Button2.setTitle(dataModel.alt62, forState: UIControlState.Normal)
+            Button3.setTitle(dataModel.alt63, forState: UIControlState.Normal)
+            Button4.setTitle(dataModel.alt64, forState: UIControlState.Normal)
+            CorrectAnswer = dataModel.alt63
+            break
             
         default:
             
@@ -118,16 +129,14 @@ class ViewController: UIViewController {
     func HideText(){
         Button1.hidden = true
     }
-    
-    func AddQuestions(sender: UIButton!) {
-        
-    }
+
     
     @IBAction func Button1Action(sender: AnyObject) {
+        print("korrekt svar: \(CorrectAnswer)")
         
-        
-        if (CorrectAnswer == "1"){
+        if (CorrectAnswer == Button1.titleLabel?.text){
             LabelEnd.text = "You are correct!"
+            UnHideLabel()
             UnHideButton()
         }
         else {
@@ -136,10 +145,10 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func Button2Action(sender: AnyObject) {
-        
-        
-        if (CorrectAnswer == "2"){
+        print("korrekt svar: \(CorrectAnswer)")
+        if (CorrectAnswer == Button2.titleLabel?.text){
             LabelEnd.text = "You are correct!"
+            UnHideLabel()
             UnHideButton()
         }
         else {
@@ -149,9 +158,11 @@ class ViewController: UIViewController {
 
     }
     @IBAction func Button3Action(sender: AnyObject) {
+        print("korrekt svar: \(CorrectAnswer)")
         
-        if (CorrectAnswer == "3"){
+        if (CorrectAnswer == Button3.titleLabel?.text){
             LabelEnd.text = "You are correct!"
+            UnHideLabel()
             UnHideButton()
         }
         else {
@@ -161,9 +172,11 @@ class ViewController: UIViewController {
 
     }
     @IBAction func Button4Action(sender: AnyObject) {
+        print("korrekt svar: \(CorrectAnswer)")
         
-        if (CorrectAnswer == "4"){
+        if (CorrectAnswer == Button4.titleLabel?.text){
             LabelEnd.text = "You are correct!"
+            UnHideLabel()
             UnHideButton()
         }
         else {
@@ -179,6 +192,16 @@ class ViewController: UIViewController {
         NextButton.hidden = true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "SegueDest") {
+            
+            let navController = segue.destinationViewController as? UINavigationController;
+            
+            let controller = navController!.topViewController as? SecondViewController;
+            
+            controller!.dataModel = dataModel
+        }
+    }
     
 
 

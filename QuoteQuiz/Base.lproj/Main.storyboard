@@ -56,7 +56,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tq-RU-iRl">
                                 <rect key="frame" x="20" y="397" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-ne-gNE">
@@ -84,8 +84,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Add questions"/>
                                 <connections>
-                                    <action selector="AddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8wg-is-n5a"/>
-                                    <segue destination="J4w-lf-0hl" kind="presentation" id="xw0-Ct-37N"/>
+                                    <segue destination="XoN-J6-F2R" kind="presentation" identifier="SegueDest" id="9fA-X2-RKb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,7 +101,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AddButton" destination="GTH-Aj-nsB" id="9PI-Yj-Bl5"/>
                         <outlet property="Button1" destination="j1a-cI-vfp" id="KDX-LV-YYT"/>
                         <outlet property="Button2" destination="EUB-lx-JvK" id="YOn-wS-UTG"/>
                         <outlet property="Button3" destination="2Fz-mM-Ghn" id="HXu-mT-O3b"/>
@@ -116,23 +114,110 @@
             </objects>
             <point key="canvasLocation" x="389" y="250"/>
         </scene>
-        <!--swag-->
-        <scene sceneID="Pnl-3n-JjM">
+        <!--Navigation Controller-->
+        <scene sceneID="hLa-PM-OaB">
             <objects>
-                <viewController title="swag" id="J4w-lf-0hl" customClass="SecondViewController" customModule="QuoteQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="XoN-J6-F2R" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KKk-VV-sVn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FLL-Yu-W6i" kind="relationship" relationship="rootViewController" id="yDZ-5f-o4c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hxw-FU-QSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="973"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="bhZ-Vr-gUh">
+            <objects>
+                <viewController id="FLL-Yu-W6i" customClass="SecondViewController" customModule="QuoteQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zcd-T6-x7o"/>
-                        <viewControllerLayoutGuide type="bottom" id="3lV-Ff-Yvz"/>
+                        <viewControllerLayoutGuide type="top" id="981-cG-nP5"/>
+                        <viewControllerLayoutGuide type="bottom" id="JPW-1l-tt8"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ltR-JC-CTZ">
+                    <view key="view" contentMode="scaleToFill" id="Pjt-5u-FI6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-fa-6cd">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Add quote" id="5en-6N-bAO"/>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Quote" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BQS-Xv-w5a">
+                                <rect key="frame" x="0.0" y="125" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="quote:" destination="FLL-Yu-W6i" eventType="editingDidEnd" id="KiN-vs-bdc"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Movie1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPT-as-Hnq">
+                                <rect key="frame" x="0.0" y="209" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Correct Movie" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VAu-Oq-NKj">
+                                <rect key="frame" x="0.0" y="285" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Movie4" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CY6-cy-IuZ">
+                                <rect key="frame" x="0.0" y="323" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Movie2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-Gg-JxW">
+                                <rect key="frame" x="0.0" y="247" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VAu-Oq-NKj" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="MjI-lF-KwA"/>
+                            <constraint firstItem="BQS-Xv-w5a" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="Sdc-14-riW"/>
+                            <constraint firstItem="SHq-Gg-JxW" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="VrK-04-RQQ"/>
+                            <constraint firstItem="CY6-cy-IuZ" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="r6G-bc-s0H"/>
+                            <constraint firstItem="QVc-fa-6cd" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="v43-GE-Qua"/>
+                            <constraint firstItem="UPT-as-Hnq" firstAttribute="centerX" secondItem="Pjt-5u-FI6" secondAttribute="centerX" id="xcj-Fc-q4T"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hPk-48-JnT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="eeq-BF-Qb7">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="Baw-Wq-CbO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gh9-ZI-a8m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3af-fk-qCV">
+                                <rect key="frame" x="534" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="Add:" destination="FLL-Yu-W6i" eventType="touchUpInside" id="356-D1-EWt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="Add" destination="3af-fk-qCV" id="i62-de-eJd"/>
+                        <outlet property="CorrectQuote" destination="VAu-Oq-NKj" id="9wx-MM-aDq"/>
+                        <outlet property="Movie" destination="BQS-Xv-w5a" id="4SI-Lb-7c0"/>
+                        <outlet property="Quote1" destination="UPT-as-Hnq" id="zl4-GY-LOx"/>
+                        <outlet property="Quote2" destination="SHq-Gg-JxW" id="sWn-qa-H7M"/>
+                        <outlet property="Quote4" destination="CY6-cy-IuZ" id="jR6-eF-xoc"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hD1-kh-0Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpX-yX-M6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="250"/>
+            <point key="canvasLocation" x="623" y="973"/>
         </scene>
     </scenes>
 </document>
